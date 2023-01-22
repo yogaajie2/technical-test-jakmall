@@ -286,7 +286,7 @@ function App() {
                 <InputWrapper>
                   <Input
                     placeholder="Email"
-                    validation={(errors.email && watchAllFields.email) ? 'invalid' : (!errors.email && watchAllFields.email) ? 'valid' : ''}
+                    validation={(errors.email) ? 'invalid' : (!errors.email && watchAllFields.email) ? 'valid' : ''}
                     {...register("email", {
                       required: "required",
 
@@ -298,14 +298,14 @@ function App() {
                   />
 
                   <label htmlFor="email">Email</label>
-                  {(errors.email && watchAllFields.email) && <IconInvalid className="material-icons">clear</IconInvalid>}
+                  {(errors.email) && <IconInvalid className="material-icons">clear</IconInvalid>}
                   {(!errors.email && watchAllFields.email) && <IconValid className="material-icons">check</IconValid>}
                 </InputWrapper>
 
                 <InputWrapper>
                   <Input
                     placeholder="Phone Number"
-                    validation={(errors.phoneNumber && watchAllFields.phoneNumber) ? 'invalid' : (!errors.phoneNumber && watchAllFields.phoneNumber) ? 'valid' : ''}
+                    validation={(errors.phoneNumber) ? 'invalid' : (!errors.phoneNumber && watchAllFields.phoneNumber) ? 'valid' : ''}
                     {...register("phoneNumber", {
                       required: false,
                       maxLength: 20,
@@ -319,7 +319,7 @@ function App() {
                   />
                 
                   <label htmlFor="phone">Phone Number</label>
-                  {(errors.phoneNumber && watchAllFields.phoneNumber) && <IconInvalid className="material-icons">clear</IconInvalid>}
+                  {(errors.phoneNumber) && <IconInvalid className="material-icons">clear</IconInvalid>}
                   {(!errors.phoneNumber && watchAllFields.phoneNumber) && <IconValid className="material-icons">check</IconValid>}
                 </InputWrapper>
 
@@ -328,7 +328,7 @@ function App() {
                     as="textarea"
                     rows={4}
                     placeholder="Delivery Address"
-                    validation={(errors.address && watchAllFields.address) ? 'invalid' : (!errors.address && watchAllFields.address) ? 'valid' : ''}
+                    validation={(errors.address) ? 'invalid' : (!errors.address && watchAllFields.address) ? 'valid' : ''}
                     {...register("address", {
                       required: true,
                       maxLength: 120
@@ -336,7 +336,7 @@ function App() {
                   />
 
                   <label htmlFor="address">Delivery Address</label>
-                  {(errors.address && watchAllFields.address) && <IconInvalid className="material-icons">clear</IconInvalid>}
+                  {(errors.address) && <IconInvalid className="material-icons">clear</IconInvalid>}
                   {(!errors.address && watchAllFields.address) && <IconValid className="material-icons">check</IconValid>}
                   <Counter>{watchAllFields.address ? 120 - watchAllFields.address.length : 120}</Counter>
                 </InputWrapper>
@@ -347,12 +347,12 @@ function App() {
                   <Input
                     placeholder="Dropshipper name"
                     disabled={!isDropship}
-                    validation={(errors.dropshipName && watchAllFields.dropshipName) ? 'invalid' : (!errors.dropshipName && watchAllFields.dropshipName) ? 'valid' : ''}
+                    validation={(errors.dropshipName) ? 'invalid' : (!errors.dropshipName && watchAllFields.dropshipName) ? 'valid' : ''}
                     {...register("dropshipName", { required: isDropship ? true : false })}
                   />
 
                   <label htmlFor="dropshipName">Dropshipper name</label>
-                  {(errors.dropshipName && watchAllFields.dropshipName) && <IconInvalid className="material-icons">clear</IconInvalid>}
+                  {(errors.dropshipName) && <IconInvalid className="material-icons">clear</IconInvalid>}
                   {(!errors.dropshipName && watchAllFields.dropshipName) && <IconValid className="material-icons">check</IconValid>}
                 </InputWrapper>
 
@@ -360,7 +360,7 @@ function App() {
                   <Input
                     placeholder="Dropshipper phone number"
                     disabled={!isDropship}
-                    validation={(errors.dropshipPhoneNumber && watchAllFields.dropshipPhoneNumber) ? 'invalid' : (!errors.dropshipPhoneNumber && watchAllFields.dropshipPhoneNumber) ? 'valid' : ''}
+                    validation={(errors.dropshipPhoneNumber) ? 'invalid' : (!errors.dropshipPhoneNumber && watchAllFields.dropshipPhoneNumber) ? 'valid' : ''}
                     {...register("dropshipPhoneNumber", {
                       required: isDropship ? true : false,
                       maxLength: 20,
@@ -374,7 +374,7 @@ function App() {
                   />
 
                   <label htmlFor="dropshipperPhone">Dropshipper phone number</label>
-                  {(errors.dropshipPhoneNumber && watchAllFields.dropshipPhoneNumber) && <IconInvalid className="material-icons">clear</IconInvalid>}
+                  {(errors.dropshipPhoneNumber) && <IconInvalid className="material-icons">clear</IconInvalid>}
                   {(!errors.dropshipPhoneNumber && watchAllFields.dropshipPhoneNumber) && <IconValid className="material-icons">check</IconValid>}
                 </InputWrapper>
               </div>
