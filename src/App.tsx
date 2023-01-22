@@ -197,6 +197,7 @@ function App() {
   interface IFormInput {
     email: string;
     phoneNumber: string;
+    address: string;
   }
   
   const {
@@ -290,9 +291,16 @@ function App() {
                     id="address"
                     rows={4}
                     placeholder="Delivery Address"
+                    validation={(errors.address && watchAllFields.address) ? 'invalid' : (!errors.address && watchAllFields.address) ? 'valid' : ''}
+                    {...register("address", {
+                      required: true,
+                      maxLength: 120
+                    })}
                   />
 
                   <label htmlFor="address">Delivery Address</label>
+                  {(errors.address && watchAllFields.address) && <IconInvalid className="material-icons">clear</IconInvalid>}
+                  {(!errors.address && watchAllFields.address) && <IconValid className="material-icons">check</IconValid>}
                 </InputWrapper>
               </div>
 
