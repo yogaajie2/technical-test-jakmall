@@ -1,9 +1,15 @@
 import styled from 'styled-components';
+import { useForm } from "react-hook-form";
 import GlobalStyle from './components/GlobalStyle';
 import FontStyle from './fonts/FontStyle';
 import MaterialIcons from './icons/MaterialIcons';
 import Summary from './components/Summary';
 import Stepper from './components/Stepper';
+
+interface Props {
+  isInvalid?: boolean;
+  validation?: string;
+}
 
 const Page = styled.main`
   border-radius: 4px;
@@ -137,14 +143,18 @@ const InputWrapper = styled.div`
   }
 `;
 
-const Input = styled.input`
-  border: 1px solid #CCC;
+const Input = styled.input<Props>`
+  border: 1px solid ${props => props.validation === 'invalid' ? "#FF8A00" : props.validation === 'valid' ? "#1BD97B" : "#CCC"};
   padding-bottom: 20px;
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 24px;
   font-size: 16px;
   font-weight: 700;
+
+  & + label {
+    color: ${props => props.isInvalid ? "#FF8A00" : "initial"};
+  }
 
   &:focus-visible {
     outline: none;
@@ -163,6 +173,20 @@ const Input = styled.input`
   }
 `;
 
+const IconInvalid = styled.span`
+  position: absolute;
+  right: 15px;
+  top: 21px;
+  color: #FF8A00;
+`;
+
+const IconValid = styled(IconInvalid)`
+  position: absolute;
+  right: 15px;
+  top: 21px;
+  color: #1BD97B;
+`;
+
 const TextArea = styled(Input)`
   padding: 21px 15px;
   font-family: 'Inter';
@@ -170,6 +194,18 @@ const TextArea = styled(Input)`
 `;
 
 function App() {
+  interface IFormInput {
+    email: string;
+  }
+  
+  const {
+    formState: { errors },
+    register,
+    watch
+  } = useForm<IFormInput>({ mode: 'onChange' });
+
+  const watchAllFields = watch();
+  
   return (
     <>
       <GlobalStyle />
@@ -208,12 +244,22 @@ function App() {
                 <InputWrapper>
                   <Input
                     type="email"
-                    name="email"
                     id="email"
                     placeholder="Email"
+                    validation={(errors.email && watchAllFields.email) ? 'invalid' : (!errors.email && watchAllFields.email) ? 'valid' : ''}
+                    {...register("email", {
+                      required: "required",
+
+                      pattern: {
+                        value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                        message: 'Please enter a valid email'
+                      }
+                    })}
                   />
 
                   <label htmlFor="email">Email</label>
+                  {(errors.email && watchAllFields.email) && <IconInvalid className="material-icons">clear</IconInvalid>}
+                  {(!errors.email && watchAllFields.email) && <IconValid className="material-icons">check</IconValid>}
                 </InputWrapper>
 
                 <InputWrapper>
