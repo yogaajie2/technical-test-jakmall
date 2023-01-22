@@ -245,8 +245,6 @@ function App() {
               <div>
                 <InputWrapper>
                   <Input
-                    type="email"
-                    id="email"
                     placeholder="Email"
                     validation={(errors.email && watchAllFields.email) ? 'invalid' : (!errors.email && watchAllFields.email) ? 'valid' : ''}
                     {...register("email", {
