@@ -200,6 +200,13 @@ const TextArea = styled(Input)`
   }
 `;
 
+const Counter = styled.span`
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 13px;
+`;
+
 function App() {
   interface IFormInput {
     email: string;
@@ -306,6 +313,7 @@ function App() {
                   <label htmlFor="address">Delivery Address</label>
                   {(errors.address && watchAllFields.address) && <IconInvalid className="material-icons">clear</IconInvalid>}
                   {(!errors.address && watchAllFields.address) && <IconValid className="material-icons">check</IconValid>}
+                  <Counter>{120 - watchAllFields.address.length}</Counter>
                 </InputWrapper>
               </div>
 
