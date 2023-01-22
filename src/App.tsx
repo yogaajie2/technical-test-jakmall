@@ -196,6 +196,7 @@ const TextArea = styled(Input)`
 function App() {
   interface IFormInput {
     email: string;
+    phoneNumber: string;
   }
   
   const {
@@ -265,13 +266,23 @@ function App() {
 
                 <InputWrapper>
                   <Input
-                    type="tel"
-                    name="phone"
-                    id="phone"
                     placeholder="Phone Number"
+                    validation={(errors.phoneNumber && watchAllFields.phoneNumber) ? 'invalid' : (!errors.phoneNumber && watchAllFields.phoneNumber) ? 'valid' : ''}
+                    {...register("phoneNumber", {
+                      required: false,
+                      maxLength: 20,
+                      minLength: 6,
+
+                      pattern: {
+                        value: /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s/0-9]*$/g,
+                        message: 'Please enter a valid phone number'
+                      }
+                    })}
                   />
                 
                   <label htmlFor="phone">Phone Number</label>
+                  {(errors.phoneNumber && watchAllFields.phoneNumber) && <IconInvalid className="material-icons">clear</IconInvalid>}
+                  {(!errors.phoneNumber && watchAllFields.phoneNumber) && <IconValid className="material-icons">check</IconValid>}
                 </InputWrapper>
 
                 <InputWrapper>
