@@ -341,9 +341,6 @@ function App() {
               <div>
                 <InputWrapper>
                   <Input
-                    type="text"
-                    name="dropshipper name"
-                    id="dropshipName"
                     placeholder="Dropshipper name"
                     disabled={!isDropship}
                   />
