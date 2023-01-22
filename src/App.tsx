@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import GlobalStyle from './components/GlobalStyle';
 import FontStyle from './fonts/FontStyle';
+import MaterialIcons from './icons/MaterialIcons';
 import './App.css';
 
 const Page = styled.main`
@@ -33,6 +34,7 @@ function App() {
     <>
       <GlobalStyle />
       <FontStyle />
+      <MaterialIcons />
 
       <Page>
         <Back>Back to cart</Back>
