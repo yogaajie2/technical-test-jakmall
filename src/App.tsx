@@ -188,9 +188,16 @@ const IconValid = styled(IconInvalid)`
 `;
 
 const TextArea = styled(Input)`
-  padding: 21px 15px;
+  padding-bottom: 20px;
+  padding-left: 15px;
+  padding-right: 42px;
+  padding-top: 24px;
   font-family: 'Inter';
   resize: none;
+
+  & ~ .material-icons {
+    top: 50px;
+  }
 `;
 
 function App() {
