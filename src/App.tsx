@@ -358,9 +358,6 @@ function App() {
 
                 <InputWrapper>
                   <Input
-                    type="tel"
-                    name="dropshipper phone"
-                    id="dropshipperPhone"
                     placeholder="Dropshipper phone number"
                     disabled={!isDropship}
                     validation={(errors.dropshipPhoneNumber && watchAllFields.dropshipPhoneNumber) ? 'invalid' : (!errors.dropshipPhoneNumber && watchAllFields.dropshipPhoneNumber) ? 'valid' : ''}
