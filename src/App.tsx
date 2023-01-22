@@ -4,7 +4,6 @@ import FontStyle from './fonts/FontStyle';
 import MaterialIcons from './icons/MaterialIcons';
 import Summary from './components/Summary';
 import Stepper from './components/Stepper';
-import './App.css';
 
 const Page = styled.main`
   border-radius: 4px;
