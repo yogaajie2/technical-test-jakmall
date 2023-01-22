@@ -207,13 +207,13 @@ function App() {
               <div>
                 <InputWrapper>
                   <Input
-                    type="text"
-                    name="name"
-                    id="name"
-                    placeholder="Name"
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Email"
                   />
 
-                  <label htmlFor="name">Name</label>
+                  <label htmlFor="email">Email</label>
                 </InputWrapper>
 
                 <InputWrapper>
