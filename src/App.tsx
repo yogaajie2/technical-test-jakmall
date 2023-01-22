@@ -224,6 +224,7 @@ function App() {
     phoneNumber: string;
     address: string;
     dropshipName: string;
+    dropshipPhoneNumber: string;
   }
 
   const [isDropship, setIsDropship] = useState(false);
@@ -270,6 +271,7 @@ function App() {
                   onChange={() => {
                     setIsDropship(!isDropship)
                     resetField('dropshipName')
+                    resetField('dropshipPhoneNumber')
                   }}
                 />
                 
@@ -361,9 +363,22 @@ function App() {
                     id="dropshipperPhone"
                     placeholder="Dropshipper phone number"
                     disabled={!isDropship}
+                    validation={(errors.dropshipPhoneNumber && watchAllFields.dropshipPhoneNumber) ? 'invalid' : (!errors.dropshipPhoneNumber && watchAllFields.dropshipPhoneNumber) ? 'valid' : ''}
+                    {...register("dropshipPhoneNumber", {
+                      required: isDropship ? true : false,
+                      maxLength: 20,
+                      minLength: 6,
+
+                      pattern: {
+                        value: /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s/0-9]*$/g,
+                        message: 'Please enter a valid phone number'
+                      }
+                    })}
                   />
 
                   <label htmlFor="dropshipperPhone">Dropshipper phone number</label>
+                  {(errors.dropshipPhoneNumber && watchAllFields.dropshipPhoneNumber) && <IconInvalid className="material-icons">clear</IconInvalid>}
+                  {(!errors.dropshipPhoneNumber && watchAllFields.dropshipPhoneNumber) && <IconValid className="material-icons">check</IconValid>}
                 </InputWrapper>
               </div>
             </Form>
