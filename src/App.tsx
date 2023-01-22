@@ -287,8 +287,6 @@ function App() {
                 <InputWrapper>
                   <TextArea
                     as="textarea"
-                    name="address"
-                    id="address"
                     rows={4}
                     placeholder="Delivery Address"
                     validation={(errors.address && watchAllFields.address) ? 'invalid' : (!errors.address && watchAllFields.address) ? 'valid' : ''}
