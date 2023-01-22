@@ -223,6 +223,7 @@ function App() {
     email: string;
     phoneNumber: string;
     address: string;
+    dropshipName: string;
   }
 
   const [isDropship, setIsDropship] = useState(false);
@@ -231,6 +232,7 @@ function App() {
     formState: { errors },
     handleSubmit,
     register,
+    resetField,
     watch
   } = useForm<IFormInput>({ mode: 'onChange' });
 
@@ -343,9 +345,13 @@ function App() {
                   <Input
                     placeholder="Dropshipper name"
                     disabled={!isDropship}
+                    validation={(errors.dropshipName && watchAllFields.dropshipName) ? 'invalid' : (!errors.dropshipName && watchAllFields.dropshipName) ? 'valid' : ''}
+                    {...register("dropshipName", { required: isDropship ? true : false })}
                   />
 
                   <label htmlFor="dropshipName">Dropshipper name</label>
+                  {(errors.dropshipName && watchAllFields.dropshipName) && <IconInvalid className="material-icons">clear</IconInvalid>}
+                  {(!errors.dropshipName && watchAllFields.dropshipName) && <IconValid className="material-icons">check</IconValid>}
                 </InputWrapper>
 
                 <InputWrapper>
