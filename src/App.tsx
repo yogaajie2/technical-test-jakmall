@@ -28,6 +28,8 @@ const Page = styled.main`
 
 const Back = styled.button`
   border: none;
+  font-family: 'Inter';
+  font-size: 14px;
   font-weight: 500;
   background-color: transparent;
   opacity: 0.6;
@@ -41,6 +43,7 @@ const Back = styled.button`
 const IconBack = styled(Back)`
   margin-right: 10px;
   vertical-align: bottom;
+  font-family: 'Material Icons';
   font-size: 18px;
 `;
 
