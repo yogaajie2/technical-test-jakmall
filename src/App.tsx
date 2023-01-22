@@ -200,6 +200,7 @@ function App() {
   
   const {
     formState: { errors },
+    handleSubmit,
     register,
     watch
   } = useForm<IFormInput>({ mode: 'onChange' });
@@ -312,7 +313,7 @@ function App() {
             </Form>
           </section>
           
-          <Summary />
+          <Summary handleSubmit={handleSubmit} />
         </StepWrapper>
       </Page>
     </>

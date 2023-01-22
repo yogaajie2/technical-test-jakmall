@@ -59,7 +59,7 @@ const Proceed = styled.button`
   }
 `;
 
-function Summary() {
+function Summary({ handleSubmit }: any) {
   return (
     <Wrapper>
       <Heading>Summary</Heading>
@@ -84,7 +84,7 @@ function Summary() {
           <span>505,900</span>
         </Total>
 
-        <Proceed>Continue to Payment</Proceed>
+        <Proceed onClick={handleSubmit((data: object) => console.log(data))}>Continue to Payment</Proceed>
       </Costs>
     </Wrapper>
   );
