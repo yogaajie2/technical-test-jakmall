@@ -1,5 +1,6 @@
-import styled from 'styled-components';
+import { useState } from 'react';
 import { useForm } from "react-hook-form";
+import styled from 'styled-components';
 import GlobalStyle from './components/GlobalStyle';
 import FontStyle from './fonts/FontStyle';
 import MaterialIcons from './icons/MaterialIcons';
@@ -213,6 +214,8 @@ function App() {
     phoneNumber: string;
     address: string;
   }
+
+  const [isDropship, setIsDropship] = useState(false);
   
   const {
     formState: { errors },
@@ -249,7 +252,15 @@ function App() {
               <Heading>Delivery details</Heading>
 
               <ToggleDropship>
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  checked={isDropship}
+                  onChange={() => {
+                    setIsDropship(!isDropship)
+                    resetField('dropshipName')
+                  }}
+                />
+                
                 <CheckBox className="material-icons unchecked">check_box_outline_blank</CheckBox>
                 <CheckBox className="material-icons checked">check_box</CheckBox>
                 Send as dropshipper
@@ -324,6 +335,7 @@ function App() {
                     name="dropshipper name"
                     id="dropshipName"
                     placeholder="Dropshipper name"
+                    disabled={!isDropship}
                   />
 
                   <label htmlFor="dropshipName">Dropshipper name</label>
@@ -335,6 +347,7 @@ function App() {
                     name="dropshipper phone"
                     id="dropshipperPhone"
                     placeholder="Dropshipper phone number"
+                    disabled={!isDropship}
                   />
 
                   <label htmlFor="dropshipperPhone">Dropshipper phone number</label>
