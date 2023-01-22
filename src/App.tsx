@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import GlobalStyle from './components/GlobalStyle';
 import FontStyle from './fonts/FontStyle';
 import './App.css';
 
@@ -30,6 +31,7 @@ const StepWrapper = styled.div`
 function App() {
   return (
     <>
+      <GlobalStyle />
       <FontStyle />
 
       <Page>
