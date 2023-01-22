@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import GlobalStyle from './components/GlobalStyle';
 import FontStyle from './fonts/FontStyle';
 import MaterialIcons from './icons/MaterialIcons';
+import Summary from './components/Summary';
 import './App.css';
 
 const Page = styled.main`
@@ -40,7 +41,8 @@ function App() {
         <Back>Back to cart</Back>
 
         <StepWrapper>
-          <h1>Delivery details</h1>
+          
+          <Summary />
         </StepWrapper>
       </Page>
     </>
