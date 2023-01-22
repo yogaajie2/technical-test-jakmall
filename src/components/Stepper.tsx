@@ -31,6 +31,7 @@ const Number = styled.div<Props>`
   text-align: center;
   background-color: ${props => props.active ? "#FF8A00" : "rgba(255, 136, 0, 0.2)"};
   color: ${props => props.active ? "#FFF" : "#FF8A00"};
+  box-shadow: ${props => props.active ? "0px 2px 4px rgba(255, 138, 0, 0.3)" : "none"};
 `;
 
 const IconArrow = styled.span`
