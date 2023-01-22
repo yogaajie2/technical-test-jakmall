@@ -157,6 +157,16 @@ const Input = styled.input<Props>`
     color: ${props => props.isInvalid ? "#FF8A00" : "initial"};
   }
 
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+
+    & + label {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+
   &:focus-visible {
     outline: none;
   }
