@@ -381,7 +381,10 @@ function App() {
             </Form>
           </section>
           
-          <Summary handleSubmit={handleSubmit} />
+          <Summary
+            handleSubmit={handleSubmit}
+            isDropship={isDropship}
+          />
         </StepWrapper>
       </Page>
     </>

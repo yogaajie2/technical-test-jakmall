@@ -59,7 +59,14 @@ const Proceed = styled.button`
   }
 `;
 
-function Summary({ handleSubmit }: any) {
+function Summary({
+  handleSubmit,
+  isDropship
+}: any) {
+  const cost = 500000;
+  const fee = 5900;
+  const formatter = new Intl.NumberFormat('en-US');
+
   return (
     <Wrapper>
       <Heading>Summary</Heading>
@@ -71,17 +78,19 @@ function Summary({ handleSubmit }: any) {
       <Costs>
         <div>
           <p>Cost of goods</p>
-          <span className="amount">500,000</span>
+          <span className="amount">{formatter.format(cost)}</span>
         </div>
 
-        <div>
-          <p>Dropshipping Fee</p>
-          <span className="amount">5,900</span>
-        </div>
+        {isDropship &&
+          <div>
+            <p>Dropshipping Fee</p>
+            <span className="amount">{formatter.format(fee)}</span>
+          </div>
+        }
 
         <Total as="div">
           <span>Total</span>
-          <span>505,900</span>
+          <span>{formatter.format(isDropship ? cost + fee : cost)}</span>
         </Total>
 
         <Proceed onClick={handleSubmit((data: object) => console.log(data))}>Continue to Payment</Proceed>
