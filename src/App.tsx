@@ -147,7 +147,7 @@ const Input = styled.input<Props>`
   border: 1px solid ${props => props.validation === 'invalid' ? "#FF8A00" : props.validation === 'valid' ? "#1BD97B" : "#CCC"};
   padding-bottom: 20px;
   padding-left: 15px;
-  padding-right: 15px;
+  padding-right: 42px;
   padding-top: 24px;
   font-size: 16px;
   font-weight: 700;
