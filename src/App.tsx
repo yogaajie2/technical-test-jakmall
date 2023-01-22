@@ -334,7 +334,7 @@ function App() {
                   <label htmlFor="address">Delivery Address</label>
                   {(errors.address && watchAllFields.address) && <IconInvalid className="material-icons">clear</IconInvalid>}
                   {(!errors.address && watchAllFields.address) && <IconValid className="material-icons">check</IconValid>}
-                  <Counter>{120 - watchAllFields.address.length}</Counter>
+                  <Counter>{watchAllFields.address ? 120 - watchAllFields.address.length : 120}</Counter>
                 </InputWrapper>
               </div>
 
