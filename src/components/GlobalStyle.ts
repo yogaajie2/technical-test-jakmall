@@ -3,7 +3,17 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Inter';
+    font-size: 14px;
     background-color: #FFFAE6;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  p {
+    margin: 0;
   }
 
   .material-icons {
