@@ -12,6 +12,7 @@ import FontStyle from './fonts/FontStyle';
 import MaterialIcons from './icons/MaterialIcons';
 import Summary from './components/Summary';
 import Stepper from './components/Stepper';
+import Back from './components/Back';
 import Delivery from './components/steps/Delivery';
 import Payment from './components/steps/Payment';
 
@@ -27,27 +28,6 @@ const Page = styled.main`
   position: relative;
   background-color: #FFF;
   box-shadow: 2px 10px 20px rgba(255, 138, 0, 0.1);
-`;
-
-const Back = styled.button`
-  border: none;
-  font-family: 'Inter';
-  font-size: 14px;
-  font-weight: 500;
-  background-color: transparent;
-  opacity: 0.6;
-  transition: 0.15s opacity ease;
-
-  &:hover {
-    opacity: 1;
-  }
-`;
-
-const IconBack = styled(Back)`
-  margin-right: 10px;
-  vertical-align: bottom;
-  font-family: 'Material Icons';
-  font-size: 18px;
 `;
 
 const StepWrapper = styled.div`
@@ -85,16 +65,10 @@ function App() {
       <Page>
         <Stepper currentStep={currentStep} />
 
-        <Back>
-          <IconBack
-            as="span"
-            className="material-icons"
-          >
-            arrow_back
-          </IconBack>
-
-          Back to cart
-        </Back>
+        <Back
+          currentStep={currentStep}
+          setCurrentStep={setCurrentStep}
+        />
 
         <StepWrapper>
           <FormProvider {...methods}>
