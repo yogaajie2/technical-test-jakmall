@@ -4,7 +4,7 @@ To see the generated static site, visit [here](https://technical-test-yoga-prase
 
 ## About
 
-Built with React 18 and bootstrapped using Create React App.
+Built with React 18 and bootstrapped using Create React App + TypeScript.
 
 Forms are handled using React Hook Form 7, I don't use this library too much so I learned a lot while working this test.
 
