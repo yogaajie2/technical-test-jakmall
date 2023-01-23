@@ -15,6 +15,7 @@ import Stepper from './components/Stepper';
 import Back from './components/Back';
 import Delivery from './components/steps/Delivery';
 import Payment from './components/steps/Payment';
+import Finish from './components/steps/Finish';
 
 const Page = styled.main`
   border-radius: 4px;
@@ -89,6 +90,15 @@ function App() {
                 setShipment={setShipment}
                 payment={payment}
                 setPayment={setPayment}
+              />
+            }
+
+            {currentStep === 3 &&
+              <Finish
+                currentStep={currentStep}
+                setCurrentStep={setCurrentStep}
+                shipment={shipment}
+                handleReset={handleReset}
               />
             }
             
