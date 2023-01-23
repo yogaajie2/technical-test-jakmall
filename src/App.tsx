@@ -66,12 +66,14 @@ function App() {
 
   const [isDropship, setIsDropship] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
+  const [shipment, setShipment] = useState<number | undefined>();
 
   const methods = useForm<IFormInput>({ mode: 'onChange' });
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log('Delivery details: ', data)
     setCurrentStep(2)
+    setShipment(0)
   };
 
   return (
@@ -103,11 +105,17 @@ function App() {
               />
             }
 
-            {currentStep === 2 && <Payment/>}
+            {currentStep === 2 &&
+              <Payment
+                shipment={shipment}
+                setShipment={setShipment}
+              />
+            }
             
             <Summary
               onSubmit={methods.handleSubmit(onSubmit)}
               isDropship={isDropship}
+              shipment={shipment}
             />
           </FormProvider>
         </StepWrapper>

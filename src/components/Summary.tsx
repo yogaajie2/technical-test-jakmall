@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Formatter from '../helpers/Formatter';
+import shipmentOptions from '../mocks/shipmentOptions';
 
 const Wrapper = styled.section`
   border-left: 1px solid rgba(255, 136, 0, 0.2);
@@ -22,6 +23,27 @@ const Contents = styled.section`
   margin-top: 10px;
 `;
 
+const Delivery = styled.section`
+  line-height: 17px;
+  color: #000;
+
+  &::before {
+    content: '';
+    border-bottom: 1px solid #D8D8D8;
+    display: block;
+    margin: 21px 0;
+    width: 80px;
+  }
+
+  & .estimate {
+    margin-top: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    color: #1BD97B;
+  }
+`;
+
 const Costs = styled.section`
   display: flex;
   flex-direction: column;
@@ -35,6 +57,10 @@ const Costs = styled.section`
     & .amount {
       font-weight: 700;
       color: #000;
+    }
+
+    & .provider {
+      font-weight: 700;
     }
   }
 `;
@@ -63,23 +89,32 @@ const Proceed = styled.button`
 interface SummaryProps {
   onSubmit: any;
   isDropship: boolean;
+  shipment: number | undefined;
 }
 
 function Summary({
   onSubmit,
-  isDropship
+  isDropship,
+  shipment
 }: SummaryProps) {
   const cost = 500000;
-  const fee = 5900;
-  // const formatter = new Intl.NumberFormat('en-US');
+  const fee = isDropship ? 5900 : 0;
+  const selectedShipment = shipment ? shipmentOptions[shipment] : shipmentOptions[0]
 
   return (
     <Wrapper>
       <Heading>Summary</Heading>
 
-      <Contents>
+      <Contents>  
         <p>10 items purchased</p>
       </Contents>
+
+      {(shipment || shipment === 0) &&
+        <Delivery>
+          <p>Delivery estimation</p>
+          <p className="estimate">{selectedShipment.estimate} by {selectedShipment.provider}</p>
+        </Delivery>
+      }
 
       <Costs>
         <div>
@@ -94,9 +129,19 @@ function Summary({
           </div>
         }
 
+        {(shipment || shipment === 0) &&
+          <div>
+            <p>
+              <span className="provider">{selectedShipment.provider} </span>
+              shipment
+            </p>
+            <span className="amount">{Formatter.format(selectedShipment.price)}</span>
+          </div>
+        }
+
         <Total as="div">
           <span>Total</span>
-          <span>{Formatter.format(isDropship ? cost + fee : cost)}</span>
+          <span>{Formatter.format(cost + fee + (shipment || shipment === 0 ? selectedShipment.price : 0))}</span>
         </Total>
 
         <Proceed onClick={() => onSubmit()}>Continue to Payment</Proceed>
