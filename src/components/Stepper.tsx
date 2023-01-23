@@ -44,13 +44,13 @@ function Stepper({ currentStep }: StepperProps) {
   return (
     <Wrapper>
       <div>
-        <Number active={currentStep === 1}>1</Number>
+        <Number active={currentStep === 1 || currentStep === 2 || currentStep === 3}>1</Number>
         Delivery
         <IconArrow className="material-icons">keyboard_arrow_right</IconArrow>
       </div>
 
       <div>
-        <Number active={currentStep === 2}>2</Number>
+        <Number active={currentStep === 2 || currentStep === 3}>2</Number>
         Payment
         <IconArrow className="material-icons">keyboard_arrow_right</IconArrow>
       </div>
