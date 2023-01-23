@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Formatter from '../helpers/Formatter';
 
 const Wrapper = styled.section`
   border-left: 1px solid rgba(255, 136, 0, 0.2);
@@ -70,7 +71,7 @@ function Summary({
 }: SummaryProps) {
   const cost = 500000;
   const fee = 5900;
-  const formatter = new Intl.NumberFormat('en-US');
+  // const formatter = new Intl.NumberFormat('en-US');
 
   return (
     <Wrapper>
@@ -83,19 +84,19 @@ function Summary({
       <Costs>
         <div>
           <p>Cost of goods</p>
-          <span className="amount">{formatter.format(cost)}</span>
+          <span className="amount">{Formatter.format(cost)}</span>
         </div>
 
         {isDropship &&
           <div>
             <p>Dropshipping Fee</p>
-            <span className="amount">{formatter.format(fee)}</span>
+            <span className="amount">{Formatter.format(fee)}</span>
           </div>
         }
 
         <Total as="div">
           <span>Total</span>
-          <span>{formatter.format(isDropship ? cost + fee : cost)}</span>
+          <span>{Formatter.format(isDropship ? cost + fee : cost)}</span>
         </Total>
 
         <Proceed onClick={() => onSubmit()}>Continue to Payment</Proceed>
