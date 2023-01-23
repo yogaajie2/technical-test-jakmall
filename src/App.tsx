@@ -54,10 +54,22 @@ function App() {
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log('Delivery details: ', data)
-    setCurrentStep(2)
-    setShipment(0)
-    setPayment(0)
+
+    if (currentStep === 1) {
+      setCurrentStep(2)
+      setShipment(0)
+      setPayment(0)
+    } else {
+      setCurrentStep(3)
+    }
   };
+
+  const handleReset = () => {
+    methods.reset()
+    setIsDropship(false)
+    setShipment(undefined)
+    setPayment(undefined)
+  }
 
   return (
     <>
