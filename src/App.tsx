@@ -80,7 +80,7 @@ function App() {
       <MaterialIcons />
 
       <Page>
-        <Stepper />
+        <Stepper currentStep={currentStep} />
 
         <Back>
           <IconBack
@@ -95,7 +95,7 @@ function App() {
 
         <StepWrapper>
           <FormProvider {...methods}>
-            { currentStep === 1 &&
+            {currentStep === 1 &&
               <Delivery
                 isDropship={isDropship}
                 setIsDropship={setIsDropship}
