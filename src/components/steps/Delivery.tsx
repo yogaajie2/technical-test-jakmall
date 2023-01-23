@@ -1,33 +1,11 @@
 import { useFormContext } from "react-hook-form";
 import styled from 'styled-components';
+import Heading from '../Heading';
 
 interface StyleProps {
   isInvalid?: boolean;
   validation?: string;
 }
-
-const Heading = styled.h1`
-  border: none;
-  display: inline-block;
-  position: relative;
-  z-index: 1;
-  font-family: 'Montserrat';
-  font-size: 36px;
-  font-weight: 700;
-  line-height: 44px;
-  color: #FF8A00;
-
-  &::after {
-    display: block;
-    height: 8px;
-    position: absolute;
-    bottom: 5px;
-    width: 300px;
-    z-index: -1;
-    background-color: #EEEEEE;
-    content: '';
-  }
-`;
 
 const Header = styled.div`
   align-items: center;
@@ -197,7 +175,7 @@ function Delivery({
   return (
     <section>
       <Header>
-        <Heading>Delivery details</Heading>
+        <Heading title="Delivery details" />
 
         <ToggleDropship>
           <input
