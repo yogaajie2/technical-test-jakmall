@@ -12,6 +12,8 @@ All styling are handled using Styled Components. Again, since I don't have much 
 
 No other libraries are used. All other components and functions are hand-coded manually.
 
+Although all required functionalities are working properly, due to my limited time available to work on this test I deeply apologize for any unmet requirements, mainly the mobile UI. Writing and building all functions and components from scratch while also using libraries that I have limited exposure with definitely took more time than I have estimated.
+
 ##
 
 If you have any questions, please contact me.
