@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import Heading from '../Heading';
-import Formatter from '../../helpers/Formatter';
+import formatter from '../../helpers/Formatter';
 
 interface StyleProps {
   selected?: boolean;
@@ -28,7 +28,7 @@ const Option = ({
     onClick={() => handleSelectShipment(provider)}
   >
     <span className="provider">{provider}</span>
-    <span className="price">{Formatter.format(price)}</span>
+    <span className="price">{formatter.format(price)}</span>
     {shipment === provider && <IconValid className="material-icons">check</IconValid>}
   </div>
 )
