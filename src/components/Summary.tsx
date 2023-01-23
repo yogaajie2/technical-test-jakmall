@@ -36,13 +36,16 @@ const Delivery = styled.section`
     width: 80px;
   }
 
-  & .estimate {
+  & .selected {
     margin-top: 4px;
     font-size: 16px;
     font-weight: 500;
     line-height: 19px;
     color: #1BD97B;
   }
+`;
+
+const Payment = styled(Delivery)`
 `;
 
 const Costs = styled.section`
@@ -92,13 +95,15 @@ interface SummaryProps {
   isDropship: boolean;
   shipment: number | undefined;
   payment: number | undefined;
+  currentStep: number;
 }
 
 function Summary({
   onSubmit,
   isDropship,
   shipment,
-  payment
+  payment,
+  currentStep
 }: SummaryProps) {
   const cost = 500000;
   const fee = isDropship ? 5900 : 0;
@@ -116,8 +121,15 @@ function Summary({
       {(shipment || shipment === 0) &&
         <Delivery>
           <p>Delivery estimation</p>
-          <p className="estimate">{selectedShipment.estimate} by {selectedShipment.provider}</p>
+          <p className="selected">{selectedShipment.estimate} by {selectedShipment.provider}</p>
         </Delivery>
+      }
+
+      {currentStep === 3 &&
+        <Payment>
+          <p>Payment method</p>
+          <p className="selected">{selectedPayment.provider}</p>
+        </Payment>
       }
 
       <Costs>
@@ -148,7 +160,9 @@ function Summary({
           <span>{Formatter.format(cost + fee + (shipment || shipment === 0 ? selectedShipment.amount : 0))}</span>
         </Total>
 
-        <Proceed onClick={() => onSubmit()}>{payment || payment === 0 ? `Pay with ${selectedPayment.provider}` : 'Continue to Payment'}</Proceed>
+        {currentStep !== 3 &&
+          <Proceed onClick={() => onSubmit()}>{payment || payment === 0 ? `Pay with ${selectedPayment.provider}` : 'Continue to Payment'}</Proceed>
+        }
       </Costs>
     </Wrapper>
   );

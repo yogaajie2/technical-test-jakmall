@@ -107,6 +107,7 @@ function App() {
               isDropship={isDropship}
               shipment={shipment}
               payment={payment}
+              currentStep={currentStep}
             />
           </FormProvider>
         </StepWrapper>
