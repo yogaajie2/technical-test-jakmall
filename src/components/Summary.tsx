@@ -59,10 +59,15 @@ const Proceed = styled.button`
   }
 `;
 
+interface SummaryProps {
+  onSubmit: any;
+  isDropship: boolean;
+}
+
 function Summary({
-  handleSubmit,
+  onSubmit,
   isDropship
-}: any) {
+}: SummaryProps) {
   const cost = 500000;
   const fee = 5900;
   const formatter = new Intl.NumberFormat('en-US');
@@ -93,7 +98,7 @@ function Summary({
           <span>{formatter.format(isDropship ? cost + fee : cost)}</span>
         </Total>
 
-        <Proceed onClick={handleSubmit((data: object) => console.log(data))}>Continue to Payment</Proceed>
+        <Proceed onClick={() => onSubmit()}>Continue to Payment</Proceed>
       </Costs>
     </Wrapper>
   );
