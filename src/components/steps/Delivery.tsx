@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
 import styled from 'styled-components';
 
-interface Props {
+interface StyleProps {
   isInvalid?: boolean;
   validation?: string;
 }
@@ -101,7 +101,7 @@ const InputWrapper = styled.div`
   }
 `;
 
-const Input = styled.input<Props>`
+const Input = styled.input<StyleProps>`
   border: 1px solid ${props => props.validation === 'invalid' ? "#FF8A00" : props.validation === 'valid' ? "#1BD97B" : "#CCC"};
   padding-bottom: 20px;
   padding-left: 15px;

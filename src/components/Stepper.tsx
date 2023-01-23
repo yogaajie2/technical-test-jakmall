@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-interface Props {
+interface StyleProps {
   active?: boolean;
 }
 
@@ -24,7 +24,7 @@ const Wrapper = styled.section`
   }
 `;
 
-const Number = styled.div<Props>`
+const Number = styled.div<StyleProps>`
   border-radius: 50%;
   width: 30px;
   line-height: 30px;
