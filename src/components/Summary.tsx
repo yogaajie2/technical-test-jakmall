@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Formatter from '../helpers/Formatter';
 import shipmentOptions from '../mocks/shipmentOptions';
+import paymentOptions from '../mocks/paymentOptions';
 
 const Wrapper = styled.section`
   border-left: 1px solid rgba(255, 136, 0, 0.2);
@@ -90,16 +91,19 @@ interface SummaryProps {
   onSubmit: any;
   isDropship: boolean;
   shipment: number | undefined;
+  payment: number | undefined;
 }
 
 function Summary({
   onSubmit,
   isDropship,
-  shipment
+  shipment,
+  payment
 }: SummaryProps) {
   const cost = 500000;
   const fee = isDropship ? 5900 : 0;
   const selectedShipment = shipment ? shipmentOptions[shipment] : shipmentOptions[0]
+  const selectedPayment = payment ? paymentOptions[payment] : paymentOptions[0]
 
   return (
     <Wrapper>
@@ -135,16 +139,16 @@ function Summary({
               <span className="provider">{selectedShipment.provider} </span>
               shipment
             </p>
-            <span className="amount">{Formatter.format(selectedShipment.price)}</span>
+            <span className="amount">{Formatter.format(selectedShipment.amount)}</span>
           </div>
         }
 
         <Total as="div">
           <span>Total</span>
-          <span>{Formatter.format(cost + fee + (shipment || shipment === 0 ? selectedShipment.price : 0))}</span>
+          <span>{Formatter.format(cost + fee + (shipment || shipment === 0 ? selectedShipment.amount : 0))}</span>
         </Total>
 
-        <Proceed onClick={() => onSubmit()}>Continue to Payment</Proceed>
+        <Proceed onClick={() => onSubmit()}>{payment || payment === 0 ? `Pay with ${selectedPayment.provider}` : 'Continue to Payment'}</Proceed>
       </Costs>
     </Wrapper>
   );
