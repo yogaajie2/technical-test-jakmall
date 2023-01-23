@@ -21,17 +21,26 @@ const IconBack = styled(Back)`
   font-size: 18px !important;
 `;
 
-interface HeadingProps {
+interface BackProps {
   currentStep: number;
   setCurrentStep: any;
+  handleReset?: any;
 }
 
 function Back({
   currentStep,
-  setCurrentStep
-}: HeadingProps) {
+  setCurrentStep,
+  handleReset
+}: BackProps) {
   return (
-    <BackButton onClick={() => currentStep > 1 && setCurrentStep(currentStep - 1)}>
+    <BackButton onClick={() => {
+      if (currentStep > 1 && currentStep < 3) {
+        setCurrentStep(currentStep - 1)
+      } else if (currentStep === 3) {
+        handleReset()
+        setCurrentStep(1)
+      }
+    }}>
       <IconBack
         as="span"
         className="material-icons"
@@ -39,7 +48,8 @@ function Back({
         arrow_back
       </IconBack>
 
-      Back to {currentStep === 1 ? 'cart' : 'delivery'}
+      {currentStep < 3 && `Back to ${currentStep === 1 ? 'cart' : 'delivery'}`}
+      {currentStep === 3 && 'Go to Homepage'}
     </BackButton>
   );
 }

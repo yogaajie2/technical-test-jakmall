@@ -67,10 +67,12 @@ function App() {
       <Page>
         <Stepper currentStep={currentStep} />
 
-        <Back
-          currentStep={currentStep}
-          setCurrentStep={setCurrentStep}
-        />
+        {currentStep < 3 &&
+          <Back
+            currentStep={currentStep}
+            setCurrentStep={setCurrentStep}
+          />
+        }
 
         <StepWrapper>
           <FormProvider {...methods}>
