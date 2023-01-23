@@ -13,6 +13,7 @@ import MaterialIcons from './icons/MaterialIcons';
 import Summary from './components/Summary';
 import Stepper from './components/Stepper';
 import Delivery from './components/steps/Delivery';
+import Payment from './components/steps/Payment';
 
 const Page = styled.main`
   border-radius: 4px;
@@ -101,6 +102,8 @@ function App() {
                 setIsDropship={setIsDropship}
               />
             }
+
+            {currentStep === 2 && <Payment/>}
             
             <Summary
               onSubmit={methods.handleSubmit(onSubmit)}
