@@ -6,9 +6,9 @@ To see the generated static site, visit [here](https://technical-test-yoga-prase
 
 Built with React 18 and bootstrapped using Create React App + TypeScript.
 
-Forms are handled using React Hook Form 7, I don't use this library too much so I learned a lot while working this test.
+Forms are handled using React Hook Form 7.
 
-All styling are handled using Styled Components. Again, since I don't have much experience using this library I learned quite a lot from this test.
+All styling are handled using Styled Components.
 
 No other libraries are used. All other components and functions are hand-coded manually.
 
