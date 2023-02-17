@@ -17,4 +17,5 @@ root.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 
 /* OK COMMIT */
+/* OK COMMIT 2 */
 reportWebVitals();
