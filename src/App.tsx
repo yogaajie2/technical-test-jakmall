@@ -128,7 +128,6 @@ function App() {
   );
 }
 
-/* TEST COMMIT */
-/* TEST COMMIT 2 */
+/* COMMIT CHECK */
 
 export default App;
